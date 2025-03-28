@@ -1,0 +1,6 @@
+syntax="proto3";
+
+package beacon.grid_map;
+
+message Header
+{}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "grid_map/proto/header.proto";
+
+package beacon.grid_map;
+
+
+message GirdMapInfo
+{
+  Header header = 1;
+  double resolution = 2;
+  double length_x = 3;
+  double length_y = 4;
+  Pose pose = 5;
+}
+

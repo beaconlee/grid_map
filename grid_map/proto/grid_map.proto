@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package beacon.grid_map;
+
+import "grid_map/proto/grid_map_info.proto";
+
+message LayerData
+{
+  repeated double data = 1;
+}
+
+message GridMap
+{
+  GirdMapInfo info = 1;
+  repeated string layers = 2;
+  repeated LayerData layers_data = 3;
+  int32 outer_start_index = 4;
+  int32 inner_start_index = 5;
+}
