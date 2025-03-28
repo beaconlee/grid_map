@@ -5,6 +5,6 @@ build --host_cxxopt='-std=c++20'
 build --linkopt='-std=c++20'
 build --copt="-g"
 build --strip=never
-build --experimental_generate_json_trace_profile
+# --experimental_generate_json_trace_profile 选项用于生成 JSON 格式的追踪（trace）日志，可以用来分析 Bazel 构建的性能。
+# build --experimental_generate_json_trace_profile
 build --python_version=PY3
-# build --python_version=PY3
