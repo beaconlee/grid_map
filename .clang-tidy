@@ -1,0 +1,29 @@
+Checks: > 
+  -*,                       # 禁用所有检查，逐步启用需要的规则
+  bugprone-*,               # 启用所有 bugprone 系列（捕捉潜在的 bug）
+  clang-analyzer-*,         # 启用所有 clang 静态分析器规则
+  concurrency-*,            # 启用并发相关检查
+  cppcoreguidelines-*,      # 启用 C++ 核心准则检查
+  misc-*,                   # 启用杂项检查（例如常量正确性）
+  modernize-*,              # 启用现代化 C++ 的规则（如使用 `auto`、`using` 等）
+  performance-*,            # 启用性能优化检查（如避免不必要的拷贝）
+  readability-*,            # 启用可读性检查（如函数复杂度、命名规则等）
+
+  # 禁用一些不必要或过于严格的规则
+  -cppcoreguidelines-avoid-magic-numbers,        # 禁用魔数检查（适度使用魔数）
+  -cppcoreguidelines-pro-type-vararg,           # 禁用可变参数检查（C 风格代码兼容性）
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay, # 禁用数组到指针的转换检查
+  -modernize-use-trailing-return-type,          # 禁用强制尾置返回类型检查
+  -readability-identifier-length,              # 禁用标识符长度限制
+  -bugprone-easily-swappable-parameters         # 禁用容易交换参数检查
+
+CheckOptions:
+  # 配置认知复杂度（函数的复杂度阈值）
+  - key: readability-function-cognitive-complexity.Threshold
+    value: 20
+  # 忽略宏定义中的复杂性检查
+  - key: readability-function-cognitive-complexity.IgnoreMacros
+    value: true
+  # 配置 bugprone-argument-comment 的参数阈值
+  - key: bugprone-argument-comment.MinimumNumberOfArguments
+    value: 3
