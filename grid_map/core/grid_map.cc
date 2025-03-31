@@ -80,7 +80,7 @@ GridMap::clear_all()
 }
 
 bool
-GridMap::exist(const std::string &layer_name)
+GridMap::exist(const std::string &layer_name) const
 {
   return data_.find(layer_name) != data_.end();
 }
@@ -153,6 +153,56 @@ GridMap::erase(const std::string &layer_name)
   return true;
 }
 
+bool
+GridMap::has_same_layers(const GridMap &other) const
+{
+  return std::any_of(layers_.begin(),
+                     layers_.end(),
+                     [&other](const std::string &layer_name)
+                     { return other.exist(layer_name); });
+}
+
+
+bool
+GridMap::position_2_index(const Position &position, Index &index)
+{
+  return false;
+}
+
+
+float &
+GridMap::at(const std::string &layer_name, const Index &index)
+{
+  try
+  {
+    return data_.at(layer_name)(index[0], index[1]);
+  }
+  catch(const std::out_of_range &exception)
+  {
+    throw std::out_of_range("GridMap::at(...) : No map layer '" + layer_name +
+                            "' available.");
+  }
+}
+
+float
+GridMap::at(const std::string &layer_name, const Index &index) const
+{
+  try
+  {
+    return data_.at(layer_name)(index[0], index[1]);
+  }
+  catch(const std::out_of_range &exception)
+  {
+    throw std::out_of_range("GridMap::at(...) : No map layer '" + layer_name +
+                            "' available.");
+  }
+}
+
+void
+GridMap::set(const Position &position)
+{
+  position_ = position;
+}
 
 
 } // namespace beacon::grid_map

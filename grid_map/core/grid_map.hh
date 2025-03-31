@@ -42,13 +42,14 @@ public:
   clear_all();
 
   bool
-  exist(const std::string &layer_name);
+  exist(const std::string &layer_name) const;
 
   const Matrix &
   get(const std::string &layer_name) const;
 
   Matrix &
   get(const std::string &layer_name);
+
 
   const Matrix &
   operator[](const std::string &layer_name) const;
@@ -80,14 +81,26 @@ public:
     return basic_layers_;
   }
 
-  [[nodiscard]]
   inline bool
   has_basic_layer() const
   {
     return !basic_layers_.empty();
   }
 
+  bool
+  has_same_layers(const GridMap &other) const;
 
+  bool
+  position_2_index(const Position &position, Index &index);
+
+  float &
+  at(const std::string &layer_name, const Index &index);
+
+  float
+  at(const std::string &layer_name, const Index &index) const;
+
+  void
+  set(const Position &position);
 
 private:
   void

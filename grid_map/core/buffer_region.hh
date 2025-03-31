@@ -22,9 +22,10 @@ public:
     , size_(Size::Zero())
     , quadrant_(Quadrant::Undefined)
   {}
+
   BufferRegion(Index start, Size size, Quadrant quadrant)
-    : start_index_(start)
-    , size_(size)
+    : start_index_(std::move(start))
+    , size_(std::move(size))
     , quadrant_(quadrant)
   {}
 
