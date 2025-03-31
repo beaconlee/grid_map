@@ -11,8 +11,12 @@ Checks:
   -modernize-use-trailing-return-type,
   -bugprone-easily-swappable-parameters
   -readability-identifier-length,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -bugprone-easily-swappable-parameters,
   -cppcoreguidelines-avoid-magic-numbers,
   -cppcoreguidelines-special-member-functions,
+  -readability-inconsistent-declaration-parameter-name,
 CheckOptions:
   # 配置认知复杂度（函数的复杂度阈值）
   - key: readability-function-cognitive-complexity.Threshold
