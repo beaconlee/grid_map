@@ -102,6 +102,12 @@ public:
   void
   set(const Position &position);
 
+  double
+  resolution() const
+  {
+    return resolution_;
+  }
+
 private:
   void
   resize(Index new_size);
